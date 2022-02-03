@@ -8586,13 +8586,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935003144}
-  m_LocalRotation: {x: -0, y: -0, z: -0.17995207, w: 0.9836754}
-  m_LocalPosition: {x: 0.0868, y: 0.023, z: 0}
+  m_LocalRotation: {x: -0.0067611523, y: 0.0015441991, z: -0.222654, w: 0.9748729}
+  m_LocalPosition: {x: 0.0625, y: 0.015, z: 0.002}
   m_LocalScale: {x: 0.67, y: 0.85, z: 1}
   m_Children: []
   m_Father: {fileID: 2075961266}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.734}
+  m_LocalEulerAnglesHint: {x: -0.716, y: 0.345, z: -25.733}
 --- !u!212 &935003146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8685,7 +8685,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.006354943}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8696,7 +8696,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.21}
+  m_Size: {x: 0.03420253, y: 0.19057947}
   m_EdgeRadius: 0
 --- !u!95 &935003149
 Animator:
@@ -18038,9 +18038,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2075961266}
   - component: {fileID: 2075961265}
-  - component: {fileID: 2075961269}
   - component: {fileID: 2075961268}
   - component: {fileID: 2075961267}
+  - component: {fileID: 2075961269}
   m_Layer: 0
   m_Name: Player_0
   m_TagString: Fighter
@@ -18107,8 +18107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075961264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.08, y: -2.18, z: 0}
-  m_LocalScale: {x: 5.360052, y: 4.6506433, z: 1}
+  m_LocalPosition: {x: 3.3, y: -2.51, z: 0}
+  m_LocalScale: {x: 5, y: 4, z: 1}
   m_Children:
   - {fileID: 935003145}
   m_Father: {fileID: 0}
@@ -18129,7 +18129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -18170,12 +18170,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2075961264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93654d5e9c642804d868c8589dc115c9, type: 3}
+  m_Script: {fileID: 11500000, guid: de8f5f15844d27f459cd798a05fbce19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoint: 10
-  maxHitpoint: 10
-  pushRecoverySpeed: 0.2
 --- !u!1 &2087696743
 GameObject:
   m_ObjectHideFlags: 0

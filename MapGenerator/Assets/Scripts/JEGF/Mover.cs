@@ -26,8 +26,10 @@ public abstract class Mover : Fighter
             transform.localScale=Vector3.one;
         }else if(moveDelta.x<0){
             transform.localScale=new Vector3(-1,1,0);
+            Debug.Log("Der");
         }
         //movimiento del personaje
-        transform.Translate(moveDelta*Time.deltaTime);
+        transform.Translate(0,moveDelta.y*Time.deltaTime,0);
+        transform.Translate(moveDelta.x*Time.deltaTime,0,0);
     }
 }

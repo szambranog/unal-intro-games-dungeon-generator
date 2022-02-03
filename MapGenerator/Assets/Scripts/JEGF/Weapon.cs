@@ -9,7 +9,7 @@ public class Weapon : Collidable
 
    //Swing
 private Animator anim;
-   private float coolDown=0.5f;
+   private float coolDown=0.3f;
    private float lastSwing;
 
 protected override void Start()
