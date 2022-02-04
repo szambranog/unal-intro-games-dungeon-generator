@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int _reverseTimer = 5;
 
+    [SerializeField]
+    public int health = 3;
+
     private SpriteRenderer _renderer;
     private Animator _animator;
     private Transform _transform;
@@ -26,6 +29,7 @@ public class Enemy : MonoBehaviour
 
     private int factor = -1;
     private int _counter = 0;
+    private bool immunity;
     private bool _runningCorroutine = false;
 
     void Start()
@@ -55,6 +59,30 @@ public class Enemy : MonoBehaviour
         {
             GameEvent.OnPlayerTakeDamage?.Invoke(Random.Range(1, 5));
         }
+    }
+
+    public void TakeDamage(int damage, Vector2 pushForce)
+    {
+        if (immunity == false)
+        {
+            health -= damage;
+            _rb.AddForce(pushForce);
+            immunity = true;
+            _renderer.color = Color.red;
+            StartCoroutine(cancelImmunity());
+        }
+        if (health <= 0)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator cancelImmunity()
+    {
+        yield return new WaitForSeconds(0.8f);
+        immunity = false;
+        _renderer.color = Color.white;
     }
 
     private void AIMovement()
@@ -87,7 +115,7 @@ public class Enemy : MonoBehaviour
 
     private void AIMovementFrog()
     {
-
+        // TODO
     }
 
     private void AIMovementOpossum()
