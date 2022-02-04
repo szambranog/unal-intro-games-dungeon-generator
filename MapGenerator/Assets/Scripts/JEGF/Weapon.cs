@@ -6,15 +6,18 @@ public class Weapon : Collidable
 {
    public int damagePoint=1;
    public float pushForce=2f;
+    public bool isSwinging;
 
    //Swing
 private Animator anim;
    private float coolDown=0.3f;
    private float lastSwing;
+    private Transform _tf;
 
 protected override void Start()
 {
     base.Start();
+    _tf = GetComponentInParent<Transform>();
     anim=GetComponent<Animator>();
 }
    protected override void Update()
@@ -47,9 +50,29 @@ protected override void Start()
        }}
               
    }
-   private void Swing()
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Enemy enemy;
+        float direction = _tf.lossyScale.x / Mathf.Abs(_tf.lossyScale.x);
+        if (collision.gameObject.TryGetComponent<Enemy>(out enemy))
+        {
+            if (isSwinging == true)
+                enemy.TakeDamage(damagePoint, new Vector3(pushForce * direction, pushForce * direction));
+        }
+    }
+
+
+    private void Swing()
    {
        anim.SetTrigger("Swing");
-
+        isSwinging =true;
+        StartCoroutine(cancelSwing());
    }
+
+    private IEnumerator cancelSwing()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isSwinging = false;
+    }
 }
