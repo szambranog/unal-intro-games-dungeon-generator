@@ -10,12 +10,29 @@ public class MovePJ : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Rigidbody2D rigidBody;
     private Vector3 moveDelta;
+    private Spawnpj spawn;
+    public GameObject[] puntos;
+    private Vector3 place;
+    private Vector3 vacio=new Vector3(0,0,0);
+    private Vector3 point;
     private float x;
     private float y;
     private bool Grounded;
     // Start is called before the first frame update
     void Start()
     {
+        puntos = GameObject.FindGameObjectsWithTag("Spawnpj");
+        foreach (GameObject spawnpj in puntos)
+        {
+            spawn=spawnpj.GetComponent<Spawnpj>();
+            place = spawn.spawnpj();
+            if (place != vacio)
+            {
+                point = place;
+                Debug.Log(point);
+            }
+        }
+        transform.position = point;
         boxCollider = GetComponent<BoxCollider2D>();
         rigidBody=GetComponent<Rigidbody2D>();
     }

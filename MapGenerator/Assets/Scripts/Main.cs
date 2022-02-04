@@ -10,40 +10,21 @@ public class Main : MonoBehaviour
     private int currentY;
     private int x;
     private int y;
+    private int j;
     private string z;
     private string w;
     
     public int[,] matriz = new int[4, 4] {{ 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+    public int[] matr = new int[4] { 0, 0, 0, 0 };
 
-    private void start()
+    private void start()    
     {
         room(gameObject);
     }
 
-    public string spot()
-    {
-        y = currentX;
-        if (y == 0)
-        {
-            w = "0";
-        }else if (y == 1)
-        {
-            w = "1";
-        }
-        else if (y == 2)
-        {
-            w = "2";
-        }
-        else if (y == 3)
-        {
-            w = "3";
-        }
-        return w;
-    }
-
     public int room(GameObject c)
     {
-        currentX = Random.Range(0,4);
+        currentX = Random.Range(0, 4);
         currentY = 0;
         direction = Random.Range(1, 6);
         while (stopGeneration == false)
@@ -183,9 +164,71 @@ public class Main : MonoBehaviour
         else if (z == "15")
         {
             x = matriz[3, 3];
+        }else if (z == "16")
+        {
+            j = matriz[0, 0];
+            if (j > 0)
+            {
+                y = y + 1;
+            }
+            if (y == 1&&j>0)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = 0;
+            }
         }
-        Debug.Log(x);
+        else if (z == "17")
+        {
+            j = matriz[0, 1];
+            if (j > 0)
+            {
+                y = y + 1;
+            }
+            if (y == 1&&j>0)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = 0;
+            }
+        }
+        else if (z == "18")
+        {
+            j = matriz[0, 2];
+            if (j > 0)
+            {
+                y = y + 1;
+            }
+            if (y == 1&&j>0)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = 0;
+            }
+        }
+        else if (z == "19")
+        {
+            j = matriz[0, 3];
+            if (j > 0)
+            {
+                y = y + 1;
+            }
+            if (y == 1&&j>0)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = 0;
+            }
+        }
         return x;
     }
-    
+
 }

@@ -8,6 +8,7 @@ TagManager:
   - Rooms
   - spot
   - Fighter
+  - Spawnpj
   layers:
   - Default
   - TransparentFX
