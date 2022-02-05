@@ -12,6 +12,11 @@ public class Respawn : MonoBehaviour
     private GameObject _spawnPoint;
     [SerializeField]
     private GameObject _player;
+    private Spawnpj spawn;
+    public GameObject[] puntos;
+    private Vector3 place;
+    private Vector3 vacio=new Vector3(0,0,0);
+    private Vector3 point;
 
     private void Start()
     {
@@ -32,7 +37,19 @@ public class Respawn : MonoBehaviour
 
     private void RespawnOnClick()
     {
-        _player.transform.position = _spawnPoint.transform.position;
+        puntos = GameObject.FindGameObjectsWithTag("Spawnpj");
+        foreach (GameObject spawnpj in puntos)
+        {
+            spawn=spawnpj.GetComponent<Spawnpj>();
+            place = spawn.spawnpj();
+            if (place != vacio)
+            {
+                point = place;
+                Debug.Log(point);
+            }
+        }
+        
+        _player.transform.position = point;
         Player player = _player.GetComponent<Player>();
         player.SetMaximumHealth();
 
