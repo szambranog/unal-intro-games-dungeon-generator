@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ExitBtn : MonoBehaviour
 {
     private Button _btn;
+    [SerializeField]
+    private GameObject _menu;
     void Start()
     {
         _btn = GetComponent<Button>();
@@ -14,6 +16,6 @@ public class ExitBtn : MonoBehaviour
 
     void Close()
     {
-        FindObjectOfType<Main>().exitGame();
+        _menu.SetActive(true);
     }
 }
