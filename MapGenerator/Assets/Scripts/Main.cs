@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
@@ -230,5 +231,8 @@ public class Main : MonoBehaviour
         }
         return x;
     }
-
+    public void exitGame()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
 }
