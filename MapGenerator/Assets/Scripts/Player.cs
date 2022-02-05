@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     {
         if (immunity == false)
         {
+            _rb = GetComponent<Rigidbody2D>();
             health -= damage;
             _rb.AddForce(pushVector);
             SliderHealth.value = health;

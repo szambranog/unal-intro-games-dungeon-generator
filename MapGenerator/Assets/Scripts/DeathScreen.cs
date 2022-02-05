@@ -11,6 +11,7 @@ public class DeathScreen : MonoBehaviour
         GameEvent.OnPlayerDies += OnPlayerDies;
         GameEvent.OnPlayerRespawn += OnPlayerRespawn;
         gameObject.SetActive(false);
+        isEnabled = false;
     }
 
     private void OnPlayerDies()
@@ -21,13 +22,13 @@ public class DeathScreen : MonoBehaviour
     private void OnPlayerRespawn()
     {
         gameObject.SetActive(false);
-        isEnabled = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isEnabled == true)
         {
+            isEnabled = false;
             GameEvent.OnPlayerRespawn?.Invoke();
         }
     }

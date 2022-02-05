@@ -16,8 +16,13 @@ public class Respawn : MonoBehaviour
     private void Start()
     {
         _btn = GetComponent<Button>();
-        _btn.onClick.AddListener(RespawnOnClick);
+        _btn.onClick.AddListener(invokeOnPlayerRespawn);
         GameEvent.OnPlayerRespawn += OnPlayerRespawn;
+    }
+
+    private void invokeOnPlayerRespawn()
+    {
+        GameEvent.OnPlayerRespawn?.Invoke();
     }
 
     private void OnPlayerRespawn()
