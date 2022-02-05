@@ -18,6 +18,7 @@ public class MovePJ : MonoBehaviour
     private float x;
     private float y;
     private bool Grounded;
+    private bool canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,32 +36,45 @@ public class MovePJ : MonoBehaviour
         transform.position = point;
         boxCollider = GetComponent<BoxCollider2D>();
         rigidBody=GetComponent<Rigidbody2D>();
+        GameEvent.OnPlayerDies += OnPlayerDies;
+        GameEvent.OnPlayerRespawn += OnPlayerRespawn;
+    }
+    
+    private void OnPlayerDies()
+    {
+        canMove = false;
+    }
+
+    private void OnPlayerRespawn()
+    {
+        canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        
-        moveDelta=new Vector3(x,y,0);
-        if (moveDelta.x>0){
-            transform.localScale=new Vector3(5,4,1);
-        }else if(moveDelta.x<0){
-            transform.localScale=new Vector3(-5,4,0);
-        }
-
-
-        if (Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f,Vector2.down,0.1f))
+        if (canMove)
         {
-            Grounded = true;
-        }
-        else Grounded = false;
+            float x = Input.GetAxisRaw("Horizontal");
+            
+            moveDelta=new Vector3(x,y,0);
+            if (moveDelta.x>0){
+                transform.localScale=new Vector3(5,4,1);
+            }else if(moveDelta.x<0){
+                transform.localScale=new Vector3(-5,4,0);
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space)&& Grounded)
-        {
-            Jump();
+            if (Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f,Vector2.down,0.1f))
+            {
+                Grounded = true;
+            }
+            else Grounded = false;
+
+            if (Input.GetKeyDown(KeyCode.Space)&& Grounded)
+            {
+                Jump();
+            }
         }
-       
     }
 
     private void FixedUpdate()

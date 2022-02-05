@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
     private Transform _transform;
     private Rigidbody2D _rb;
+    private bool _direction = false;
 
     private int factor = -1;
     private int _counter = 0;
@@ -52,12 +53,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         Player player;
         if (collision.gameObject.TryGetComponent<Player>(out player))
         {
-            GameEvent.OnPlayerTakeDamage?.Invoke(Random.Range(1, 5));
+            Debug.Log("Direction: " + _direction);
+            GameEvent.OnPlayerTakeDamage?.Invoke(Random.Range(4, 7), new Vector2(400 * (_direction ? 1 : -1), 400));
         }
     }
 
@@ -99,6 +101,7 @@ public class Enemy : MonoBehaviour
                 AIMovementOpossum();
                 break;
         }
+        _direction = _renderer.flipX;
     }
     private void AIMovementEagle()
     {
