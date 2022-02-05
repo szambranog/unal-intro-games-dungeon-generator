@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomSpawn : MonoBehaviour
@@ -24,9 +25,14 @@ public class RoomSpawn : MonoBehaviour
         Invoke("Spawn",0.1f);
     }
 
-    void Spawn()
+    public void Respawn()
     {
-        if (Spawned == false)
+        Start();
+    }
+
+    public void Spawn()
+    {
+        if (true)
         {
             rand = Random.Range(0, 2);
             if (openSide == 0)

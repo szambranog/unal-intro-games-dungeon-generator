@@ -58,7 +58,7 @@ protected override void Start()
         if (collision.gameObject.TryGetComponent<Enemy>(out enemy))
         {
             if (isSwinging == true)
-                enemy.TakeDamage(damagePoint, new Vector3(pushForce * direction, pushForce * direction));
+                enemy.TakeDamage(damagePoint, new Vector3(pushForce * direction, pushForce));
         }
     }
 

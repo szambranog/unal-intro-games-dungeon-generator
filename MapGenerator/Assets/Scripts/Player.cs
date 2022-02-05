@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     public int healthMax = 30;
-    public int health;
+    public int health = 30;
     public Slider SliderHealth;
 
     void Start()
@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
         GameEvent.OnPlayerTakeDamage += OnPlayerTakeDamage;
         health = healthMax;
         SliderHealth.maxValue = healthMax;
+        SliderHealth.value = health;
     }
     private void OnPlayerTakeDamage(int damage)
     {
