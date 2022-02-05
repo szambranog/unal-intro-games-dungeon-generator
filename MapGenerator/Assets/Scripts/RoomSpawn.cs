@@ -27,12 +27,13 @@ public class RoomSpawn : MonoBehaviour
 
     public void Respawn()
     {
+        Spawned = false;
         Start();
     }
 
     public void Spawn()
     {
-        if (true)
+        if (!Spawned)
         {
             rand = Random.Range(0, 2);
             if (openSide == 0)
@@ -67,7 +68,7 @@ public class RoomSpawn : MonoBehaviour
         
     }
 
-   private void OnTriggerEnter(Collider other)
+   private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("SpawnPoint"))
         {

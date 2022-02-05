@@ -22,19 +22,13 @@ public class Respawn : MonoBehaviour
     {
         _btn = GetComponent<Button>();
         _btn.onClick.AddListener(invokeOnPlayerRespawn);
-        GameEvent.OnPlayerRespawn += OnPlayerRespawn;
+        GameEvent.OnPlayerRespawn += RespawnOnClick;
     }
 
     private void invokeOnPlayerRespawn()
     {
         GameEvent.OnPlayerRespawn?.Invoke();
     }
-
-    private void OnPlayerRespawn()
-    {
-        RespawnOnClick();
-    }
-
     private void RespawnOnClick()
     {
         puntos = GameObject.FindGameObjectsWithTag("Spawnpj");
